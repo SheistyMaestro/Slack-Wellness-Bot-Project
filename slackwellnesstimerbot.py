@@ -1,9 +1,21 @@
+#For proper function, make sure pip is enabled during Python install otherwise uninstall/reinstall with it enabled
+#Before running, open a desktop command/terminal prompt and run several pip commands
+#pip install slackclient
+#pip install schedule
+#pip install dotenv
+
 import slack
 import os
 import schedule
 import time
 
-client=slack.WebClient(token=os.environ['wellnessbot_secretkey'])
+from pathlib import Path
+from dotenv import load_dotenv
+
+env_path = Path('.') / '.env'
+load_dotenv(dotenv_path=env_path)
+
+client=slack.WebClient(token=os.environ['SLACK_TOKEN'])
 
 def messageMe():
   print ("Ready")
